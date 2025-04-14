@@ -32,14 +32,15 @@ curl -X POST "http://127.0.0.1:5000/create_asset?assetId=11&asset_name=MyNewAsse
 
 
 ** v1 Release Notes (4/13): **
-1. Barebone structure and backend APIs with mocked data (see init_db.py script)
+1. Barebone structure and backend APIs with mocked data (see init_db.py script). No multi-threading/concurrency
 2. Docker doesn't work yet. Need to run locally.
 3. No full-fledged unit tests
 
 
 ** Incomplete/TODO: **
 1. Bugs - Not fully vetted and tested code. Only main flow is tested (somewhat). So you can assume some corner cases not taken care of/bugs to be there
-2. Better abstractions. Move common check to private methods, better code organization etc. etc.
-3. (Bad perf, not scalable) Brute-force implementation. Storing and querying geofences via SQL (Postgres)
-4. (Bad perf) No caching. Exploring using memcache is a good logical next step.
+2. No concurrency/synchronization. Will mostly fail or result in invalid states when used for multi-user scenarios. 
+3. Better abstractions. Move common check to private methods, better code organization etc. etc.
+4. (Bad perf, not scalable) Brute-force implementation. Storing and querying geofences via SQL (Postgres). The problem is similar to proximity server, and there are well known techniques like geo-hashing and multi-layer grid (quad-trees are an interesting exploration)
+5. (Bad perf) No caching. Exploring using memcache is a good logical next step.
 
