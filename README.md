@@ -41,6 +41,6 @@ curl -X POST "http://127.0.0.1:5000/create_asset?assetId=11&asset_name=MyNewAsse
 1. Bugs - Not fully vetted and tested code. Only main flow is tested (somewhat). So you can assume some corner cases not taken care of/bugs to be there
 2. No concurrency/synchronization. Will mostly fail or result in invalid states when used for multi-user scenarios. 
 3. Better abstractions. Move common check to private methods, better code organization etc. etc.
-4. (Bad perf, not scalable) Brute-force implementation. Storing and querying geofences via SQL (Postgres). The problem is similar to proximity server, and there are well known techniques like geo-hashing and multi-layer grid (quad-trees are an interesting exploration)
+4. (Bad perf, not scalable) Brute-force implementation. Storing and querying geofences via SQL (Postgres). The problem is similar to proximity server, and there are well known techniques like geo-hashing
 5. (Bad perf) No caching. Exploring using memcache is a good logical next step.
 
